@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditTecnicoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditTecnicoLabel_codTecnico}" for="codTecnico" />
+                    <h:inputText id="codTecnico" value="#{tecnicoController.selected.codTecnico}" title="#{bundle.EditTecnicoTitle_codTecnico}" required="true" requiredMessage="#{bundle.EditTecnicoRequiredMessage_codTecnico}"/>
+                    <h:outputLabel value="#{bundle.EditTecnicoLabel_nomTecnico}" for="nomTecnico" />
+                    <h:inputText id="nomTecnico" value="#{tecnicoController.selected.nomTecnico}" title="#{bundle.EditTecnicoTitle_nomTecnico}" />
+                </h:panelGrid>
+                <h:commandLink action="#{tecnicoController.update}" value="#{bundle.EditTecnicoSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditTecnicoViewLink}"/>
+                <br />
+                <h:commandLink action="#{tecnicoController.prepareList}" value="#{bundle.EditTecnicoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditTecnicoIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

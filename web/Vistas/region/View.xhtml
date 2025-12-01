@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRegionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRegionLabel_codRegion}"/>
+                    <h:outputText value="#{regionController.selected.codRegion}" title="#{bundle.ViewRegionTitle_codRegion}"/>
+                    <h:outputText value="#{bundle.ViewRegionLabel_nomRegion}"/>
+                    <h:outputText value="#{regionController.selected.nomRegion}" title="#{bundle.ViewRegionTitle_nomRegion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{regionController.destroyAndView}" value="#{bundle.ViewRegionDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRegionEditLink}"/>
+                <br />
+                <h:commandLink action="#{regionController.prepareCreate}" value="#{bundle.ViewRegionCreateLink}" />
+                <br />
+                <h:commandLink action="#{regionController.prepareList}" value="#{bundle.ViewRegionShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRegionIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

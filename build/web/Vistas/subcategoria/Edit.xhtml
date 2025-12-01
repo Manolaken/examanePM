@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSubcategoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSubcategoriaLabel_codSubcategoria}" for="codSubcategoria" />
+                    <h:inputText id="codSubcategoria" value="#{subcategoriaController.selected.codSubcategoria}" title="#{bundle.EditSubcategoriaTitle_codSubcategoria}" required="true" requiredMessage="#{bundle.EditSubcategoriaRequiredMessage_codSubcategoria}"/>
+                    <h:outputLabel value="#{bundle.EditSubcategoriaLabel_nomSubcategoria}" for="nomSubcategoria" />
+                    <h:inputText id="nomSubcategoria" value="#{subcategoriaController.selected.nomSubcategoria}" title="#{bundle.EditSubcategoriaTitle_nomSubcategoria}" />
+                    <h:outputLabel value="#{bundle.EditSubcategoriaLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{subcategoriaController.selected.descripcion}" title="#{bundle.EditSubcategoriaTitle_descripcion}" />
+                    <h:outputLabel value="#{bundle.EditSubcategoriaLabel_codCategoria}" for="codCategoria" />
+                    <h:inputText id="codCategoria" value="#{subcategoriaController.selected.codCategoria}" title="#{bundle.EditSubcategoriaTitle_codCategoria}" />
+                </h:panelGrid>
+                <h:commandLink action="#{subcategoriaController.update}" value="#{bundle.EditSubcategoriaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSubcategoriaViewLink}"/>
+                <br />
+                <h:commandLink action="#{subcategoriaController.prepareList}" value="#{bundle.EditSubcategoriaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSubcategoriaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

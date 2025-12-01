@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPoblacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPoblacionEmpty}" rendered="#{poblacionController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{poblacionController.items.rowCount > 0}">
+                    <h:outputText value="#{poblacionController.pagination.pageFirstItem + 1}..#{poblacionController.pagination.pageLastItem + 1}/#{poblacionController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{poblacionController.previous}" value="#{bundle.Previous} #{poblacionController.pagination.pageSize}" rendered="#{poblacionController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{poblacionController.next}" value="#{bundle.Next} #{poblacionController.pagination.pageSize}" rendered="#{poblacionController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{poblacionController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPoblacionTitle_codPoblacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codPoblacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPoblacionTitle_nomPoblacion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomPoblacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPoblacionTitle_target}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.target}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{poblacionController.prepareView}" value="#{bundle.ListPoblacionViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{poblacionController.prepareEdit}" value="#{bundle.ListPoblacionEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{poblacionController.destroy}" value="#{bundle.ListPoblacionDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{poblacionController.prepareCreate}" value="#{bundle.ListPoblacionCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPoblacionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

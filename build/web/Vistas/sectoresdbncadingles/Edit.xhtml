@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditSectoresdbncadinglesTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditSectoresdbncadinglesLabel_codsectorIng}" for="codsectorIng" />
+                    <h:inputText id="codsectorIng" value="#{sectoresdbncadinglesController.selected.codsectorIng}" title="#{bundle.EditSectoresdbncadinglesTitle_codsectorIng}" required="true" requiredMessage="#{bundle.EditSectoresdbncadinglesRequiredMessage_codsectorIng}"/>
+                    <h:outputLabel value="#{bundle.EditSectoresdbncadinglesLabel_nomsectorIng}" for="nomsectorIng" />
+                    <h:inputText id="nomsectorIng" value="#{sectoresdbncadinglesController.selected.nomsectorIng}" title="#{bundle.EditSectoresdbncadinglesTitle_nomsectorIng}" />
+                    <h:outputLabel value="#{bundle.EditSectoresdbncadinglesLabel_codSector}" for="codSector" />
+                    <h:inputText id="codSector" value="#{sectoresdbncadinglesController.selected.codSector}" title="#{bundle.EditSectoresdbncadinglesTitle_codSector}" />
+                </h:panelGrid>
+                <h:commandLink action="#{sectoresdbncadinglesController.update}" value="#{bundle.EditSectoresdbncadinglesSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditSectoresdbncadinglesViewLink}"/>
+                <br />
+                <h:commandLink action="#{sectoresdbncadinglesController.prepareList}" value="#{bundle.EditSectoresdbncadinglesShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditSectoresdbncadinglesIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

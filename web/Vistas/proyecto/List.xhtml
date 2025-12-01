@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListProyectoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListProyectoEmpty}" rendered="#{empty proyectoController.itemsList}"/>
+                <p:dataTable value="#{proyectoController.itemsList}" var="proyecto" rows="10" 
+                             style="border:solid 1px"
+                             paginator="true" paginatorPosition="both"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                             rowsPerPageTemplate="5,10,25,50,{ShowAll|'Todos'}"
+                             emptyMessage="No hay proyectos disponibles"
+                             rendered="#{not empty proyectoController.itemsList}">
+                    <p:column headerText="#{bundle.ListProyectoTitle_codigo}" sortBy="#{proyecto.codigo}" width="100px">
+                        <h:outputText value="#{proyecto.codigo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{bundle.ListProyectoTitle_titulo}" sortBy="#{proyecto.titulo}" width="300px">
+                        <h:outputText value="#{proyecto.titulo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{bundle.ListProyectoTitle_pais}" sortBy="#{proyecto.pais}" width="80px">
+                        <h:outputText value="#{proyecto.pais}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{bundle.ListProyectoTitle_anyo}" sortBy="#{proyecto.anyo}" width="60px" style="text-align:center">
+                        <h:outputText value="#{proyecto.anyo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Inspectoría" sortBy="#{proyecto.inspectoria.codInspectoria}" width="100px">
+                        <h:outputText value="#{proyecto.inspectoria.codInspectoria}" rendered="#{proyecto.inspectoria != null}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{bundle.ListProyectoTitle_dineroConcedido}" sortBy="#{proyecto.dineroConcedido}" width="120px" style="text-align:right">
+                        <h:outputText value="#{proyecto.dineroConcedido}">
+                            <f:convertNumber type="currency" currencySymbol="€" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="#{bundle.ListProyectoTitle_fechaInicio}" sortBy="#{proyecto.fechaInicio}" width="100px">
+                        <h:outputText value="#{proyecto.fechaInicio}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="#{bundle.ListProyectoTitle_fechaFin}" sortBy="#{proyecto.fechaFin}" width="100px">
+                        <h:outputText value="#{proyecto.fechaFin}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="ODS" width="200">
+                        <h:selectManyListbox id="susOds" 
+                                             style="width:200px; border:none; overflow-y:scroll; background:none;" 
+                                             size="3" disabled="true">
+                            <f:selectItems value="#{proyecto.odsprincipalList}" 
+                                           var="ods" 
+                                           itemValue="#{ods.codOds}" 
+                                           itemLabel="ODS #{ods.codOds}: #{ods.nomOds}"/>
+                        </h:selectManyListbox>
+                    </p:column>
+                    
+                    <p:column headerText="Códigos CRS" width="200">
+                        <h:selectManyListbox id="susCrs" 
+                                             style="width:200px; border:none; overflow-y:scroll; background:none;" 
+                                             size="3" disabled="true">
+                            <f:selectItems value="#{proyecto.crsList}" 
+                                           var="crs" 
+                                           itemLabel="#{crs.codCrs} - #{crs.nomCrs}"/>
+                        </h:selectManyListbox>
+                    </p:column>
+                    
+                    <p:column headerText="Envíos" width="250">
+                        <h:selectManyListbox id="susEnvios" 
+                                             style="width:250px; border:none; overflow-y:scroll; background:none;" 
+                                             size="3" disabled="true">
+                            <f:selectItems value="#{proyecto.envioList}" 
+                                           var="envio" 
+                                           itemLabel="#{envio.envioPK.fecha} - #{envio.cantidad}€"/>
+                        </h:selectManyListbox>
+                    </p:column>
+                    
+                    <p:column headerText="Acciones" width="200">
+                        <h:commandLink action="#{proyectoController.prepareViewProyecto(proyecto)}" value="#{bundle.ListProyectoViewLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{proyectoController.prepareEditProyecto(proyecto)}" value="#{bundle.ListProyectoEditLink}"/>
+                        <h:outputText value=" "/>
+                        <h:commandLink action="#{proyectoController.destroyProyecto(proyecto)}" value="#{bundle.ListProyectoDestroyLink}"/>
+                    </p:column>
+                </p:dataTable>
+                <br />
+                <h:commandLink action="#{proyectoController.prepareCreate}" value="#{bundle.ListProyectoCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListProyectoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

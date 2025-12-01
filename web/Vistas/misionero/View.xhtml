@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewMisioneroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewMisioneroLabel_codMisionero}"/>
+                    <h:outputText value="#{misioneroController.selected.codMisionero}" title="#{bundle.ViewMisioneroTitle_codMisionero}"/>
+                    <h:outputText value="#{bundle.ViewMisioneroLabel_nomMisionero}"/>
+                    <h:outputText value="#{misioneroController.selected.nomMisionero}" title="#{bundle.ViewMisioneroTitle_nomMisionero}"/>
+                    <h:outputText value="#{bundle.ViewMisioneroLabel_tipoMisionero}"/>
+                    <h:outputText value="#{misioneroController.selected.tipoMisionero}" title="#{bundle.ViewMisioneroTitle_tipoMisionero}"/>
+                    <h:outputText value="#{bundle.ViewMisioneroLabel_mail1}"/>
+                    <h:outputText value="#{misioneroController.selected.mail1}" title="#{bundle.ViewMisioneroTitle_mail1}"/>
+                    <h:outputText value="#{bundle.ViewMisioneroLabel_mail2}"/>
+                    <h:outputText value="#{misioneroController.selected.mail2}" title="#{bundle.ViewMisioneroTitle_mail2}"/>
+                    <h:outputText value="#{bundle.ViewMisioneroLabel_telefono}"/>
+                    <h:outputText value="#{misioneroController.selected.telefono}" title="#{bundle.ViewMisioneroTitle_telefono}"/>
+                    <h:outputText value="#{bundle.ViewMisioneroLabel_codMision}"/>
+                    <h:outputText value="#{misioneroController.selected.codMision}" title="#{bundle.ViewMisioneroTitle_codMision}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{misioneroController.destroyAndView}" value="#{bundle.ViewMisioneroDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewMisioneroEditLink}"/>
+                <br />
+                <h:commandLink action="#{misioneroController.prepareCreate}" value="#{bundle.ViewMisioneroCreateLink}" />
+                <br />
+                <h:commandLink action="#{misioneroController.prepareList}" value="#{bundle.ViewMisioneroShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewMisioneroIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

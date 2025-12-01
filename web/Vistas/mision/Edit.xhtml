@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMisionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMisionLabel_codMision}" for="codMision" />
+                    <h:inputText id="codMision" value="#{misionController.selected.codMision}" title="#{bundle.EditMisionTitle_codMision}" required="true" requiredMessage="#{bundle.EditMisionRequiredMessage_codMision}"/>
+                    <h:outputLabel value="#{bundle.EditMisionLabel_nomMision}" for="nomMision" />
+                    <h:inputText id="nomMision" value="#{misionController.selected.nomMision}" title="#{bundle.EditMisionTitle_nomMision}" />
+                    <h:outputLabel value="#{bundle.EditMisionLabel_codInspectoria}" for="codInspectoria" />
+                    <h:inputText id="codInspectoria" value="#{misionController.selected.codInspectoria}" title="#{bundle.EditMisionTitle_codInspectoria}" />
+                    <h:outputLabel value="#{bundle.EditMisionLabel_direccion1}" for="direccion1" />
+                    <h:inputText id="direccion1" value="#{misionController.selected.direccion1}" title="#{bundle.EditMisionTitle_direccion1}" />
+                    <h:outputLabel value="#{bundle.EditMisionLabel_direccion2}" for="direccion2" />
+                    <h:inputText id="direccion2" value="#{misionController.selected.direccion2}" title="#{bundle.EditMisionTitle_direccion2}" />
+                    <h:outputLabel value="#{bundle.EditMisionLabel_provincia}" for="provincia" />
+                    <h:inputText id="provincia" value="#{misionController.selected.provincia}" title="#{bundle.EditMisionTitle_provincia}" />
+                    <h:outputLabel value="#{bundle.EditMisionLabel_ciudad}" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{misionController.selected.ciudad}" title="#{bundle.EditMisionTitle_ciudad}" />
+                    <h:outputLabel value="#{bundle.EditMisionLabel_pais}" for="pais" />
+                    <h:inputText id="pais" value="#{misionController.selected.pais}" title="#{bundle.EditMisionTitle_pais}" />
+                    <h:outputLabel value="#{bundle.EditMisionLabel_telefono}" for="telefono" />
+                    <h:inputText id="telefono" value="#{misionController.selected.telefono}" title="#{bundle.EditMisionTitle_telefono}" />
+                </h:panelGrid>
+                <h:commandLink action="#{misionController.update}" value="#{bundle.EditMisionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMisionViewLink}"/>
+                <br />
+                <h:commandLink action="#{misionController.prepareList}" value="#{bundle.EditMisionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMisionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

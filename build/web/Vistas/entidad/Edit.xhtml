@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEntidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEntidadLabel_codigo}" for="codigo" />
+                    <h:inputText id="codigo" value="#{entidadController.selected.codigo}" title="#{bundle.EditEntidadTitle_codigo}" required="true" requiredMessage="#{bundle.EditEntidadRequiredMessage_codigo}"/>
+                    <h:outputLabel value="#{bundle.EditEntidadLabel_tipoEntidad}" for="tipoEntidad" />
+                    <h:inputText id="tipoEntidad" value="#{entidadController.selected.tipoEntidad}" title="#{bundle.EditEntidadTitle_tipoEntidad}" />
+                    <h:outputLabel value="#{bundle.EditEntidadLabel_nomEntidad}" for="nomEntidad" />
+                    <h:inputText id="nomEntidad" value="#{entidadController.selected.nomEntidad}" title="#{bundle.EditEntidadTitle_nomEntidad}" />
+                </h:panelGrid>
+                <h:commandLink action="#{entidadController.update}" value="#{bundle.EditEntidadSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEntidadViewLink}"/>
+                <br />
+                <h:commandLink action="#{entidadController.prepareList}" value="#{bundle.EditEntidadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEntidadIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

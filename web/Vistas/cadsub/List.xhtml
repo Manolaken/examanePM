@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCadsubTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCadsubEmpty}" rendered="#{cadsubController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cadsubController.items.rowCount > 0}">
+                    <h:outputText value="#{cadsubController.pagination.pageFirstItem + 1}..#{cadsubController.pagination.pageLastItem + 1}/#{cadsubController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cadsubController.previous}" value="#{bundle.Previous} #{cadsubController.pagination.pageSize}" rendered="#{cadsubController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cadsubController.next}" value="#{bundle.Next} #{cadsubController.pagination.pageSize}" rendered="#{cadsubController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cadsubController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCadsubTitle_codSubcad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codSubcad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCadsubTitle_nomSubcad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomSubcad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCadsubTitle_nomsubcadING}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomsubcadING}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCadsubTitle_informacionESP}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.informacionESP}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCadsubTitle_informacionING}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.informacionING}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCadsubTitle_codCad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codCad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cadsubController.prepareView}" value="#{bundle.ListCadsubViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cadsubController.prepareEdit}" value="#{bundle.ListCadsubEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cadsubController.destroy}" value="#{bundle.ListCadsubDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cadsubController.prepareCreate}" value="#{bundle.ListCadsubCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCadsubIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

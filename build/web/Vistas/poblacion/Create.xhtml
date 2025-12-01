@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePoblacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePoblacionLabel_codPoblacion}" for="codPoblacion" />
+                    <h:inputText id="codPoblacion" value="#{poblacionController.selected.codPoblacion}" title="#{bundle.CreatePoblacionTitle_codPoblacion}" required="true" requiredMessage="#{bundle.CreatePoblacionRequiredMessage_codPoblacion}"/>
+                    <h:outputLabel value="#{bundle.CreatePoblacionLabel_nomPoblacion}" for="nomPoblacion" />
+                    <h:inputText id="nomPoblacion" value="#{poblacionController.selected.nomPoblacion}" title="#{bundle.CreatePoblacionTitle_nomPoblacion}" />
+                    <h:outputLabel value="#{bundle.CreatePoblacionLabel_target}" for="target" />
+                    <h:inputText id="target" value="#{poblacionController.selected.target}" title="#{bundle.CreatePoblacionTitle_target}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{poblacionController.create}" value="#{bundle.CreatePoblacionSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{poblacionController.prepareList}" value="#{bundle.CreatePoblacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePoblacionIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

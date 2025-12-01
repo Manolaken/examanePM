@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewInspectoriaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_codigo}"/>
+                    <h:outputText value="#{inspectoriaController.selected.codigo}" title="#{bundle.ViewInspectoriaTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_socioLocal}"/>
+                    <h:outputText value="#{inspectoriaController.selected.socioLocal}" title="#{bundle.ViewInspectoriaTitle_socioLocal}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_codInspectoria}"/>
+                    <h:outputText value="#{inspectoriaController.selected.codInspectoria}" title="#{bundle.ViewInspectoriaTitle_codInspectoria}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_nomInspectoria}"/>
+                    <h:outputText value="#{inspectoriaController.selected.nomInspectoria}" title="#{bundle.ViewInspectoriaTitle_nomInspectoria}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_responsableLegal}"/>
+                    <h:outputText value="#{inspectoriaController.selected.responsableLegal}" title="#{bundle.ViewInspectoriaTitle_responsableLegal}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_opd}"/>
+                    <h:outputText value="#{inspectoriaController.selected.opd}" title="#{bundle.ViewInspectoriaTitle_opd}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_opdContactoNombre}"/>
+                    <h:outputText value="#{inspectoriaController.selected.opdContactoNombre}" title="#{bundle.ViewInspectoriaTitle_opdContactoNombre}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_opdContactoMail}"/>
+                    <h:outputText value="#{inspectoriaController.selected.opdContactoMail}" title="#{bundle.ViewInspectoriaTitle_opdContactoMail}"/>
+                    <h:outputText value="#{bundle.ViewInspectoriaLabel_opdContactoTelefono}"/>
+                    <h:outputText value="#{inspectoriaController.selected.opdContactoTelefono}" title="#{bundle.ViewInspectoriaTitle_opdContactoTelefono}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{inspectoriaController.destroyAndView}" value="#{bundle.ViewInspectoriaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewInspectoriaEditLink}"/>
+                <br />
+                <h:commandLink action="#{inspectoriaController.prepareCreate}" value="#{bundle.ViewInspectoriaCreateLink}" />
+                <br />
+                <h:commandLink action="#{inspectoriaController.prepareList}" value="#{bundle.ViewInspectoriaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewInspectoriaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Proyectos por Inspectoría"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Seleccione Inspectoría:"/>
+                    <h:selectOneMenu value="#{proyectoController.inspectoriaFiltro}" converter="inspectoriaConverter">
+                        <f:selectItems value="#{inspectoriaController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    
+                    <h:outputText value=""/>
+                    <h:commandButton value="Buscar" action="#{proyectoController.loadProyectosPorInspectoria}"/>
+                </h:panelGrid>
+                
+                <h:outputText value="No hay proyectos para la inspectoría seleccionada" 
+                             rendered="#{empty proyectoController.listaProyectos and proyectoController.inspectoriaFiltro != null}"/>
+                
+                <p:dataTable value="#{proyectoController.listaProyectos}" var="proyecto" 
+                             rendered="#{not empty proyectoController.listaProyectos}"
+                             rows="10"
+                             paginator="true" paginatorPosition="both"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                             rowsPerPageTemplate="5,10,25,50">
+                    <p:column headerText="Código" sortBy="#{proyecto.codigo}" width="100px">
+                        <h:outputText value="#{proyecto.codigo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Título" sortBy="#{proyecto.titulo}" width="300px">
+                        <h:outputText value="#{proyecto.titulo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="País" sortBy="#{proyecto.pais}" width="80px">
+                        <h:outputText value="#{proyecto.pais}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Año" sortBy="#{proyecto.anyo}" width="60px" style="text-align:center">
+                        <h:outputText value="#{proyecto.anyo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Dinero Concedido" sortBy="#{proyecto.dineroConcedido}" width="120px" style="text-align:right">
+                        <h:outputText value="#{proyecto.dineroConcedido}">
+                            <f:convertNumber type="currency" currencySymbol="€" minFractionDigits="2"/>
+                        </h:outputText>
+                    </p:column>
+                    
+                    <p:column headerText="Fecha Inicio" sortBy="#{proyecto.fechaInicio}" width="100px">
+                        <h:outputText value="#{proyecto.fechaInicio}" rendered="#{proyecto.fechaInicio != null}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                        <h:outputText value="-" rendered="#{proyecto.fechaInicio == null}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Fecha Fin" sortBy="#{proyecto.fechaFin}" width="100px">
+                        <h:outputText value="#{proyecto.fechaFin}" rendered="#{proyecto.fechaFin != null}">
+                            <f:convertDateTime pattern="dd/MM/yyyy"/>
+                        </h:outputText>
+                        <h:outputText value="-" rendered="#{proyecto.fechaFin == null}"/>
+                    </p:column>
+                </p:dataTable>
+                
+                <br />
+                <h:link outcome="/index" value="Volver al índice"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
+
+

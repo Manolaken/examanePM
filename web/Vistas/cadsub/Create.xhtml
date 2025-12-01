@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCadsubTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCadsubLabel_codSubcad}" for="codSubcad" />
+                    <h:inputText id="codSubcad" value="#{cadsubController.selected.codSubcad}" title="#{bundle.CreateCadsubTitle_codSubcad}" required="true" requiredMessage="#{bundle.CreateCadsubRequiredMessage_codSubcad}"/>
+                    <h:outputLabel value="#{bundle.CreateCadsubLabel_nomSubcad}" for="nomSubcad" />
+                    <h:inputText id="nomSubcad" value="#{cadsubController.selected.nomSubcad}" title="#{bundle.CreateCadsubTitle_nomSubcad}" />
+                    <h:outputLabel value="#{bundle.CreateCadsubLabel_nomsubcadING}" for="nomsubcadING" />
+                    <h:inputText id="nomsubcadING" value="#{cadsubController.selected.nomsubcadING}" title="#{bundle.CreateCadsubTitle_nomsubcadING}" />
+                    <h:outputLabel value="#{bundle.CreateCadsubLabel_informacionESP}" for="informacionESP" />
+                    <h:inputTextarea rows="4" cols="30" id="informacionESP" value="#{cadsubController.selected.informacionESP}" title="#{bundle.CreateCadsubTitle_informacionESP}" />
+                    <h:outputLabel value="#{bundle.CreateCadsubLabel_informacionING}" for="informacionING" />
+                    <h:inputTextarea rows="4" cols="30" id="informacionING" value="#{cadsubController.selected.informacionING}" title="#{bundle.CreateCadsubTitle_informacionING}" />
+                    <h:outputLabel value="#{bundle.CreateCadsubLabel_codCad}" for="codCad" />
+                    <h:selectOneMenu id="codCad" value="#{cadsubController.selected.codCad}" title="#{bundle.CreateCadsubTitle_codCad}" >
+                        <f:selectItems value="#{cadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cadsubController.create}" value="#{bundle.CreateCadsubSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cadsubController.prepareList}" value="#{bundle.CreateCadsubShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCadsubIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

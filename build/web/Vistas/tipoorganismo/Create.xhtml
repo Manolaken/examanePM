@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoorganismoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoorganismoLabel_codTipo}" for="codTipo" />
+                    <h:inputText id="codTipo" value="#{tipoorganismoController.selected.codTipo}" title="#{bundle.CreateTipoorganismoTitle_codTipo}" required="true" requiredMessage="#{bundle.CreateTipoorganismoRequiredMessage_codTipo}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoorganismoLabel_nomTipo}" for="nomTipo" />
+                    <h:inputText id="nomTipo" value="#{tipoorganismoController.selected.nomTipo}" title="#{bundle.CreateTipoorganismoTitle_nomTipo}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoorganismoController.create}" value="#{bundle.CreateTipoorganismoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoorganismoController.prepareList}" value="#{bundle.CreateTipoorganismoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoorganismoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

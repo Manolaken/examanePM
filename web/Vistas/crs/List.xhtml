@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListCrsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCrsEmpty}" rendered="#{crsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{crsController.items.rowCount > 0}">
+                    <h:outputText value="#{crsController.pagination.pageFirstItem + 1}..#{crsController.pagination.pageLastItem + 1}/#{crsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{crsController.previous}" value="#{bundle.Previous} #{crsController.pagination.pageSize}" rendered="#{crsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{crsController.next}" value="#{bundle.Next} #{crsController.pagination.pageSize}" rendered="#{crsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{crsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCrsTitle_codCrs}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codCrs}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCrsTitle_nomCrs}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomCrs}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCrsTitle_nomcrsIngles}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomcrsIngles}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCrsTitle_informacionesESP}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.informacionesESP}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCrsTitle_informacionesING}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.informacionesING}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCrsTitle_codCadsub}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codCadsub}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{crsController.prepareView}" value="#{bundle.ListCrsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{crsController.prepareEdit}" value="#{bundle.ListCrsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{crsController.destroy}" value="#{bundle.ListCrsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{crsController.prepareCreate}" value="#{bundle.ListCrsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListCrsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

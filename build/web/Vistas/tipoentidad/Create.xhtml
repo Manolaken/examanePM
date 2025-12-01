@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateTipoentidadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateTipoentidadLabel_codTipo}" for="codTipo" />
+                    <h:inputText id="codTipo" value="#{tipoentidadController.selected.codTipo}" title="#{bundle.CreateTipoentidadTitle_codTipo}" required="true" requiredMessage="#{bundle.CreateTipoentidadRequiredMessage_codTipo}"/>
+                    <h:outputLabel value="#{bundle.CreateTipoentidadLabel_nomTipo}" for="nomTipo" />
+                    <h:inputText id="nomTipo" value="#{tipoentidadController.selected.nomTipo}" title="#{bundle.CreateTipoentidadTitle_nomTipo}" />
+                    <h:outputLabel value="#{bundle.CreateTipoentidadLabel_tipoOrganismo}" for="tipoOrganismo" />
+                    <h:inputText id="tipoOrganismo" value="#{tipoentidadController.selected.tipoOrganismo}" title="#{bundle.CreateTipoentidadTitle_tipoOrganismo}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{tipoentidadController.create}" value="#{bundle.CreateTipoentidadSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{tipoentidadController.prepareList}" value="#{bundle.CreateTipoentidadShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateTipoentidadIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewProyectoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewProyectoLabel_codProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.codProyecto}" title="#{bundle.ViewProyectoTitle_codProyecto}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_ong}"/>
+                    <h:outputText value="#{proyectoController.selected.ong}" title="#{bundle.ViewProyectoTitle_ong}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_codigo}"/>
+                    <h:outputText value="#{proyectoController.selected.codigo}" title="#{bundle.ViewProyectoTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_parte}"/>
+                    <h:outputText value="#{proyectoController.selected.parte}" title="#{bundle.ViewProyectoTitle_parte}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_referencia}"/>
+                    <h:outputText value="#{proyectoController.selected.referencia}" title="#{bundle.ViewProyectoTitle_referencia}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_numProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.numProyecto}" title="#{bundle.ViewProyectoTitle_numProyecto}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_instrumento}"/>
+                    <h:outputText value="#{proyectoController.selected.instrumento}" title="#{bundle.ViewProyectoTitle_instrumento}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_pais}"/>
+                    <h:outputText value="#{proyectoController.selected.pais}" title="#{bundle.ViewProyectoTitle_pais}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_localizacion}"/>
+                    <h:outputText value="#{proyectoController.selected.localizacion}" title="#{bundle.ViewProyectoTitle_localizacion}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_anyo}"/>
+                    <h:outputText value="#{proyectoController.selected.anyo}" title="#{bundle.ViewProyectoTitle_anyo}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_titulo}"/>
+                    <h:outputText value="#{proyectoController.selected.titulo}" title="#{bundle.ViewProyectoTitle_titulo}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_descripcion}"/>
+                    <h:outputText value="#{proyectoController.selected.descripcion}" title="#{bundle.ViewProyectoTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_socioLocal}"/>
+                    <h:outputText value="#{proyectoController.selected.socioLocal}" title="#{bundle.ViewProyectoTitle_socioLocal}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_regionSdb}"/>
+                    <h:outputText value="#{proyectoController.selected.regionSdb}" title="#{bundle.ViewProyectoTitle_regionSdb}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_responsableLegal}"/>
+                    <h:outputText value="#{proyectoController.selected.responsableLegal}" title="#{bundle.ViewProyectoTitle_responsableLegal}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_opd}"/>
+                    <h:outputText value="#{proyectoController.selected.opd}" title="#{bundle.ViewProyectoTitle_opd}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_opdContactoNombre}"/>
+                    <h:outputText value="#{proyectoController.selected.opdContactoNombre}" title="#{bundle.ViewProyectoTitle_opdContactoNombre}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_opdContactoMail}"/>
+                    <h:outputText value="#{proyectoController.selected.opdContactoMail}" title="#{bundle.ViewProyectoTitle_opdContactoMail}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_opdContactoTelefono}"/>
+                    <h:outputText value="#{proyectoController.selected.opdContactoTelefono}" title="#{bundle.ViewProyectoTitle_opdContactoTelefono}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_responsableLocal}"/>
+                    <h:outputText value="#{proyectoController.selected.responsableLocal}" title="#{bundle.ViewProyectoTitle_responsableLocal}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_costoTotal}"/>
+                    <h:outputText value="#{proyectoController.selected.costoTotal}" title="#{bundle.ViewProyectoTitle_costoTotal}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_dineroSolicitado}"/>
+                    <h:outputText value="#{proyectoController.selected.dineroSolicitado}" title="#{bundle.ViewProyectoTitle_dineroSolicitado}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_aprobado}"/>
+                    <h:outputText value="#{proyectoController.selected.aprobado}" title="#{bundle.ViewProyectoTitle_aprobado}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_docConcesion}"/>
+                    <h:outputText value="#{proyectoController.selected.docConcesion}" title="#{bundle.ViewProyectoTitle_docConcesion}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_fechaConcesion}"/>
+                    <h:outputText value="#{proyectoController.selected.fechaConcesion}" title="#{bundle.ViewProyectoTitle_fechaConcesion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_dineroConcedido}"/>
+                    <h:outputText value="#{proyectoController.selected.dineroConcedido}" title="#{bundle.ViewProyectoTitle_dineroConcedido}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_cd}"/>
+                    <h:outputText value="#{proyectoController.selected.cd}" title="#{bundle.ViewProyectoTitle_cd}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_cdSedeLocal}"/>
+                    <h:outputText value="#{proyectoController.selected.cdSedeLocal}" title="#{bundle.ViewProyectoTitle_cdSedeLocal}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_ci}"/>
+                    <h:outputText value="#{proyectoController.selected.ci}" title="#{bundle.ViewProyectoTitle_ci}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_ciMs}"/>
+                    <h:outputText value="#{proyectoController.selected.ciMs}" title="#{bundle.ViewProyectoTitle_ciMs}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_ciSocioLocal}"/>
+                    <h:outputText value="#{proyectoController.selected.ciSocioLocal}" title="#{bundle.ViewProyectoTitle_ciSocioLocal}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_apoCdMs}"/>
+                    <h:outputText value="#{proyectoController.selected.apoCdMs}" title="#{bundle.ViewProyectoTitle_apoCdMs}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_duracionReal}"/>
+                    <h:outputText value="#{proyectoController.selected.duracionReal}" title="#{bundle.ViewProyectoTitle_duracionReal}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_fechaInicio}"/>
+                    <h:outputText value="#{proyectoController.selected.fechaInicio}" title="#{bundle.ViewProyectoTitle_fechaInicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_fechaFin}"/>
+                    <h:outputText value="#{proyectoController.selected.fechaFin}" title="#{bundle.ViewProyectoTitle_fechaFin}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_fechaFinAmpliacion}"/>
+                    <h:outputText value="#{proyectoController.selected.fechaFinAmpliacion}" title="#{bundle.ViewProyectoTitle_fechaFinAmpliacion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_duracionTrasAmpliacion}"/>
+                    <h:outputText value="#{proyectoController.selected.duracionTrasAmpliacion}" title="#{bundle.ViewProyectoTitle_duracionTrasAmpliacion}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_duracionIF}"/>
+                    <h:outputText value="#{proyectoController.selected.duracionIF}" title="#{bundle.ViewProyectoTitle_duracionIF}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_fechamaximaIF}"/>
+                    <h:outputText value="#{proyectoController.selected.fechamaximaIF}" title="#{bundle.ViewProyectoTitle_fechamaximaIF}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_ingles}"/>
+                    <h:outputText value="#{proyectoController.selected.ingles}" title="#{bundle.ViewProyectoTitle_ingles}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_status}"/>
+                    <h:outputText value="#{proyectoController.selected.status}" title="#{bundle.ViewProyectoTitle_status}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_target}"/>
+                    <h:outputText value="#{proyectoController.selected.target}" title="#{bundle.ViewProyectoTitle_target}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_tipoProyecto}"/>
+                    <h:outputText value="#{proyectoController.selected.tipoProyecto}" title="#{bundle.ViewProyectoTitle_tipoProyecto}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_fechaCierre}"/>
+                    <h:outputText value="#{proyectoController.selected.fechaCierre}" title="#{bundle.ViewProyectoTitle_fechaCierre}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_cerrado}"/>
+                    <h:outputText value="#{proyectoController.selected.cerrado}" title="#{bundle.ViewProyectoTitle_cerrado}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_sectorJYD}"/>
+                    <h:outputText value="#{proyectoController.selected.sectorJYD}" title="#{bundle.ViewProyectoTitle_sectorJYD}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_subsectorJYD}"/>
+                    <h:outputText value="#{proyectoController.selected.subsectorJYD}" title="#{bundle.ViewProyectoTitle_subsectorJYD}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_sectorCAD}"/>
+                    <h:outputText value="#{proyectoController.selected.sectorCAD}" title="#{bundle.ViewProyectoTitle_sectorCAD}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_numBeneficiarios}"/>
+                    <h:outputText value="#{proyectoController.selected.numBeneficiarios}" title="#{bundle.ViewProyectoTitle_numBeneficiarios}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_numBeneficiariosMujeres}"/>
+                    <h:outputText value="#{proyectoController.selected.numBeneficiariosMujeres}" title="#{bundle.ViewProyectoTitle_numBeneficiariosMujeres}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_numBeneficiariosHombres}"/>
+                    <h:outputText value="#{proyectoController.selected.numBeneficiariosHombres}" title="#{bundle.ViewProyectoTitle_numBeneficiariosHombres}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_descripcionBeneficiarios}"/>
+                    <h:outputText value="#{proyectoController.selected.descripcionBeneficiarios}" title="#{bundle.ViewProyectoTitle_descripcionBeneficiarios}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_numBeneficiarioInd}"/>
+                    <h:outputText value="#{proyectoController.selected.numBeneficiarioInd}" title="#{bundle.ViewProyectoTitle_numBeneficiarioInd}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_numEntidadesBeneficiarias}"/>
+                    <h:outputText value="#{proyectoController.selected.numEntidadesBeneficiarias}" title="#{bundle.ViewProyectoTitle_numEntidadesBeneficiarias}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_comentarios}"/>
+                    <h:outputText value="#{proyectoController.selected.comentarios}" title="#{bundle.ViewProyectoTitle_comentarios}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_justificacion}"/>
+                    <h:outputText value="#{proyectoController.selected.justificacion}" title="#{bundle.ViewProyectoTitle_justificacion}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_informeDonante}"/>
+                    <h:outputText value="#{proyectoController.selected.informeDonante}" title="#{bundle.ViewProyectoTitle_informeDonante}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_categoria}"/>
+                    <h:outputText value="#{proyectoController.selected.categoria}" title="#{bundle.ViewProyectoTitle_categoria}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_subcategoria}"/>
+                    <h:outputText value="#{proyectoController.selected.subcategoria}" title="#{bundle.ViewProyectoTitle_subcategoria}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_extinguido}"/>
+                    <h:outputText value="#{proyectoController.selected.extinguido}" title="#{bundle.ViewProyectoTitle_extinguido}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_tecFor}"/>
+                    <h:outputText value="#{proyectoController.selected.tecFor}" title="#{bundle.ViewProyectoTitle_tecFor}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_tecSeg}"/>
+                    <h:outputText value="#{proyectoController.selected.tecSeg}" title="#{bundle.ViewProyectoTitle_tecSeg}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_tipoEntidad}"/>
+                    <h:outputText value="#{proyectoController.selected.tipoEntidad}" title="#{bundle.ViewProyectoTitle_tipoEntidad}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_sede}"/>
+                    <h:outputText value="#{proyectoController.selected.sede}" title="#{bundle.ViewProyectoTitle_sede}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_inspectoria}"/>
+                    <h:outputText value="#{proyectoController.selected.inspectoria}" title="#{bundle.ViewProyectoTitle_inspectoria}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_sectorMS}"/>
+                    <h:outputText value="#{proyectoController.selected.sectorMS}" title="#{bundle.ViewProyectoTitle_sectorMS}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_subsectorMS}"/>
+                    <h:outputText value="#{proyectoController.selected.subsectorMS}" title="#{bundle.ViewProyectoTitle_subsectorMS}"/>
+                    <h:outputText value="#{bundle.ViewProyectoLabel_entidad}"/>
+                    <h:outputText value="#{proyectoController.selected.entidad}" title="#{bundle.ViewProyectoTitle_entidad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{proyectoController.destroyAndView}" value="#{bundle.ViewProyectoDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewProyectoEditLink}"/>
+                <br />
+                <h:commandLink action="#{proyectoController.prepareCreate}" value="#{bundle.ViewProyectoCreateLink}" />
+                <br />
+                <h:commandLink action="#{proyectoController.prepareList}" value="#{bundle.ViewProyectoShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewProyectoIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

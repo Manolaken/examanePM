@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewOdsprincipalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewOdsprincipalLabel_codOds}"/>
+                    <h:outputText value="#{odsprincipalController.selected.codOds}" title="#{bundle.ViewOdsprincipalTitle_codOds}"/>
+                    <h:outputText value="#{bundle.ViewOdsprincipalLabel_nomOds}"/>
+                    <h:outputText value="#{odsprincipalController.selected.nomOds}" title="#{bundle.ViewOdsprincipalTitle_nomOds}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{odsprincipalController.destroyAndView}" value="#{bundle.ViewOdsprincipalDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewOdsprincipalEditLink}"/>
+                <br />
+                <h:commandLink action="#{odsprincipalController.prepareCreate}" value="#{bundle.ViewOdsprincipalCreateLink}" />
+                <br />
+                <h:commandLink action="#{odsprincipalController.prepareList}" value="#{bundle.ViewOdsprincipalShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewOdsprincipalIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListcadTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListcadEmpty}" rendered="#{cadController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cadController.items.rowCount > 0}">
+                    <h:outputText value="#{cadController.pagination.pageFirstItem + 1}..#{cadController.pagination.pageLastItem + 1}/#{cadController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cadController.previous}" value="#{bundle.Previous} #{cadController.pagination.pageSize}" rendered="#{cadController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cadController.next}" value="#{bundle.Next} #{cadController.pagination.pageSize}" rendered="#{cadController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cadController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcadTitle_codCad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codCad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListcadTitle_nomCad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomCad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cadController.prepareView}" value="#{bundle.ListcadViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cadController.prepareEdit}" value="#{bundle.ListcadEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cadController.destroy}" value="#{bundle.ListcadDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cadController.prepareCreate}" value="#{bundle.ListcadCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListcadIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

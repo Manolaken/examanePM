@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListSociolocalTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListSociolocalEmpty}" rendered="#{sociolocalController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{sociolocalController.items.rowCount > 0}">
+                    <h:outputText value="#{sociolocalController.pagination.pageFirstItem + 1}..#{sociolocalController.pagination.pageLastItem + 1}/#{sociolocalController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{sociolocalController.previous}" value="#{bundle.Previous} #{sociolocalController.pagination.pageSize}" rendered="#{sociolocalController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{sociolocalController.next}" value="#{bundle.Next} #{sociolocalController.pagination.pageSize}" rendered="#{sociolocalController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{sociolocalController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSociolocalTitle_codSocio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codSocio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSociolocalTitle_nomSocio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nomSocio}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListSociolocalTitle_orden}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.orden}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{sociolocalController.prepareView}" value="#{bundle.ListSociolocalViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sociolocalController.prepareEdit}" value="#{bundle.ListSociolocalEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{sociolocalController.destroy}" value="#{bundle.ListSociolocalDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{sociolocalController.prepareCreate}" value="#{bundle.ListSociolocalCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListSociolocalIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
